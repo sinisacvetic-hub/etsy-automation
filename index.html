@@ -75,7 +75,6 @@ $('exportBtn').addEventListener('click',()=>{
  const blob=new Blob([JSON.stringify(getData(),null,2)],{type:'application/json'});
  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='etsy-listing-draft.json';a.click();URL.revokeObjectURL(a.href);
 });
-fetch('/api/status').then(r=>r.json()).then(s=>{$('status').textContent=s.message;}).catch(()=>{$('status').textContent='Serverski status nije dostupan u ovom prikazu.'});
-</script>
+</).tex$('status').textContent='Aplikacija radi.'tContent='Aplikacija radi. Nacrt možete pregledati i izvesti; Etsy oglas se ne objavljuje automatski.';pt>
 </body>
 </html>
