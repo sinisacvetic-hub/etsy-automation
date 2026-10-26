@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Automation Tool</title>
+    <style>
+        :root {
+            --primary-color: #f1641e; /* Etsy narandžasta boja */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #222222;
+            --border-color: #e1e1e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #d85210;
+        }
+
+        .output-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f3f5;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            display: none;
+        }
+
+        .output-box.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Etsy Automation Dashboard</h1>
+            <p>Alat za automatizaciju i upravljanje Etsy prodavnicom</p>
+        </header>
+
+        <main>
+            <form id="automationForm">
+                <div class="form-group">
+                    <label for="productTitle">Naziv proizvoda / Listing Title</label>
+                    <input type="text" id="productTitle" placeholder="Unesite naziv lista..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tagovi (odvojeni zarezom)</label>
+                    <textarea id="tags" rows="3" placeholder="npr. handmade, gift ideas, custom print..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="action">Izaberite akciju</label>
+                    <select id="action">
+                        <option value="generate">Generiši SEO opis</option>
+                        <option value="tags">Optimizuj tagove</option>
+                        <option value="schedule">Zakaži objavu</option>
+                    </select>
+                </div>
+
+                <button type="submit">Pokreni automatizaciju</button>
+            </form>
+
+            <div id="output" class="output-box">
+                <h3>Rezultat:</h3>
+                <p id="outputContent"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Etsy Automation Tool | Pokreće GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('automationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('productTitle').value;
+            const tags = document.getElementById('tags').value;
+            const action = document.getElementById('action').value;
+
+            const outputDiv = document.getElementById('output');
+            const outputContent = document.getElementById('outputContent');
+
+            outputContent.innerHTML = `<strong>Akcija:</strong> ${action}<br>` +
+                                      `<strong>Proizvod:</strong> ${title}<br>` +
+                                      `<strong>Status:</strong> Uspešno obrađeno!`;
+
+            outputDiv.classList.add('active');
+        });
+    </script>
+</body>
+</html>
 
